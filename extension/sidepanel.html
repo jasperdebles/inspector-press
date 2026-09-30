@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, sans-serif; 
+      padding: 14px; 
+      margin: 0; 
+      background: #f8f9fa; 
+      color: #1f2937; 
+    }
+
+    /* Inspector Header Styling */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #eff6ff;
+      padding: 2px;
+      border: 1px solid #dbeafe;
+    }
+    .header-info h2 {
+      font-size: 16px;
+      margin: 0;
+      color: #111827;
+      font-weight: 700;
+    }
+    .header-info p {
+      font-size: 11px;
+      margin: 2px 0 0 0;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    /* Input & Button */
+    input { 
+      width: 100%; 
+      padding: 9px 12px; 
+      margin-bottom: 10px; 
+      box-sizing: border-box; 
+      border: 1px solid #d1d5db; 
+      border-radius: 6px; 
+      font-size: 13px;
+      outline: none;
+    }
+    input:focus { border-color: #2563eb; }
+    
+    button { 
+      width: 100%; 
+      padding: 10px; 
+      background: #2563eb; 
+      color: white; 
+      border: none; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      font-weight: 600; 
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+    button:hover { background: #1d4ed8; }
+    button:disabled { background: #93c5fd; cursor: not-allowed; }
+
+    /* Result Card */
+    #result { 
+      margin-top: 14px; 
+      background: white; 
+      padding: 14px; 
+      border-radius: 8px; 
+      border: 1px solid #e5e7eb; 
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+    }
+    .score-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .score { 
+      font-size: 26px; 
+      font-weight: 800; 
+      color: #2563eb; 
+    }
+    
+    h3 { margin: 12px 0 6px 0; font-size: 13px; text-transform: uppercase; color: #4b5563; letter-spacing: 0.5px; }
+    p#summaryText { font-size: 13px; margin: 0; color: #374151; line-height: 1.4; }
+
+    .claim-box { 
+      background: #f9fafb; 
+      padding: 10px; 
+      border-radius: 6px; 
+      margin-top: 8px; 
+      font-size: 12px; 
+      border-left: 3px solid #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header met Avatar & Titel netjes uitgelijnd -->
+  <div class="header">
+    <img src="images/inspector.svg" alt="Inspector Press">
+    <div class="header-info">
+      <h2>Inspector Press</h2>
+      <p>Journalistic Bias Auditor</p>
+    </div>
+  </div>
+  
+  <input type="password" id="apiKey" placeholder="Paste your Gemini API Key...">
+  <button id="analyzeBtn">Analyze Current Page</button>
+
+  <div id="status" style="margin-top: 10px; font-size: 13px; color: #6b7280;"></div>
+  
+  <div id="result" style="display: none;">
+    <div class="score-container">
+      <h3 style="margin: 0;">Objectivity Score</h3>
+      <div class="score" id="scoreValue">-</div>
+    </div>
+    
+    <h3>Summary</h3>
+    <p id="summaryText"></p>
+
+    <h3>Key Claims</h3>
+    <div id="claimsList"></div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

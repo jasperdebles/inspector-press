@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Journalism Bias Checker",
+  "version": "1.0",
+  "description": "Analyze news articles directly in your side panel using AI.",
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "<all_urls>"
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "sidebar_action": {
+    "default_panel": "sidepanel.html",
+    "default_title": "Bias Checker"
+  },
+  "action": {
+    "default_title": "Open Bias Checker"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bias-checker@local"
+    }
+  }
+}
